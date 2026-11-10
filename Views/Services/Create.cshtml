@@ -1,0 +1,31 @@
+@model AutoSzerviz.Models.Service
+
+@{
+    ViewData["Title"] = "Új Szolgáltatás";
+}
+
+<h2>Új Szolgáltatás Hozzáadása</h2>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"></label>
+                <input asp-for="Price" class="form-control" type="number" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="DurationInMinutes" class="form-label"></label>
+                <input asp-for="DurationInMinutes" class="form-control" type="number" />
+                <span asp-validation-for="DurationInMinutes" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-success">Mentés</button>
+            <a asp-action="Index" class="btn btn-secondary">Vissza</a>
+        </form>
+    </div>
+</div>

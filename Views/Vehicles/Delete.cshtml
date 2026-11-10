@@ -1,0 +1,22 @@
+@model AutoSzerviz.Models.Vehicle
+
+@{
+    ViewData["Title"] = "Jármű Törlése";
+}
+
+<h3>Biztosan törölni szeretnéd ezt a járművet?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Rendszám</dt>
+        <dd class="col-sm-9">@Model.LicensePlate</dd>
+        <dt class="col-sm-3">Típus</dt>
+        <dd class="col-sm-9">@Model.MakeAndModel</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Törlés</button>
+        <a asp-action="Index" class="btn btn-secondary">Mégse</a>
+    </form>
+</div>

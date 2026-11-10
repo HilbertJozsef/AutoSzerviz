@@ -1,0 +1,24 @@
+@model AutoSzerviz.Models.Appointment
+
+@{
+    ViewData["Title"] = "Foglalás Lemondása";
+}
+
+<h3>Biztosan le szeretnéd mondani ezt az időpontot?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Időpont</dt>
+        <dd class="col-sm-9">@Model.AppointmentDate.ToString("yyyy.MM.dd. HH:mm")</dd>
+        <dt class="col-sm-3">Jármű</dt>
+        <dd class="col-sm-9">@Model.Vehicle?.LicensePlate</dd>
+        <dt class="col-sm-3">Szolgáltatás</dt>
+        <dd class="col-sm-9">@Model.Service?.Name</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Lemondás Megerősítése</button>
+        <a asp-action="Index" class="btn btn-secondary">Mégse</a>
+    </form>
+</div>

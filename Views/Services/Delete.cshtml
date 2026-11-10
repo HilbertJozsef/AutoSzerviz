@@ -1,0 +1,22 @@
+@model AutoSzerviz.Models.Service
+
+@{
+    ViewData["Title"] = "Szolgáltatás Törlése";
+}
+
+<h3>Biztosan törölni szeretnéd ezt a szolgáltatást?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Név</dt>
+        <dd class="col-sm-9">@Model.Name</dd>
+        <dt class="col-sm-3">Ár</dt>
+        <dd class="col-sm-9">@Model.Price.ToString("N0") Ft</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Törlés</button>
+        <a asp-action="Index" class="btn btn-secondary">Mégse</a>
+    </form>
+</div>

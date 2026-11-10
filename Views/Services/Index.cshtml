@@ -1,0 +1,33 @@
+@model IEnumerable<AutoSzerviz.Models.Service>
+
+@{
+    ViewData["Title"] = "Szolgáltatások";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Szolgáltatások és Árak</h2>
+    <a asp-action="Create" class="btn btn-primary">Új Szolgáltatás Hozzáadása</a>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Price)</th>
+            <th>@Html.DisplayNameFor(model => model.DurationInMinutes)</th>
+            <th>Műveletek</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Name)</td>
+            <td>@item.Price.ToString("N0") Ft</td>
+            <td>@item.DurationInMinutes perc</td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Törlés</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

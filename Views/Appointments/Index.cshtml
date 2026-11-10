@@ -1,0 +1,39 @@
+@model IEnumerable<AutoSzerviz.Models.Appointment>
+
+@{
+    ViewData["Title"] = "Időpontfoglalásaim";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Foglalt Időpontjaim</h2>
+    <a asp-action="Create" class="btn btn-primary">Új Időpont Foglalása</a>
+</div>
+
+<table class="table table-striped table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>Időpont</th>
+            <th>Jármű</th>
+            <th>Szolgáltatás</th>
+            <th>Ár</th>
+            <th>Státusz</th>
+            <th>Műveletek</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.AppointmentDate.ToString("yyyy.MM.dd. HH:mm")</td>
+            <td>@item.Vehicle?.LicensePlate (@item.Vehicle?.MakeAndModel)</td>
+            <td>@item.Service?.Name</td>
+            <td>@item.Service?.Price.ToString("N0") Ft</td>
+            <td>
+                <span class="badge bg-warning text-dark">@item.Status</span>
+            </td>
+            <td>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Lemondás</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
